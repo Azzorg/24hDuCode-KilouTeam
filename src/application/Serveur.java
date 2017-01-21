@@ -12,6 +12,26 @@ import java.util.List;
 public class Serveur {
 	private static int PORT = 1500;
 	
+	/**
+	 * Méthode qui attend la confirmation de tous les clients
+	 * @param list
+	 * @param nbJoueur
+	 * @throws InterruptedException
+	 */
+	public static void waitConfirmClient(List<Socket> list, int nbJoueur) throws InterruptedException{
+		//Tableau de Thread pour les attentes de confirmation des clients
+		ThreadOK threadOK [] = new ThreadOK[nbJoueur];;
+		
+		for(int i = 0; i<nbJoueur; i++){
+			threadOK[i] = new ThreadOK(list.get(i));
+			threadOK[i].start();
+		}
+		
+		for(int i = 0; i<nbJoueur; i++){
+			threadOK[i].join();
+		}
+	}
+	
 	public static void main(String[] args) {
 		try {
 			System.out.println("début");
@@ -23,7 +43,10 @@ public class Serveur {
 			//Liste des PrintStream des clients -> out 
 			List<PrintStream> listClientPrintStream = new ArrayList<PrintStream>();
 			
-			int nbJoueur;
+			
+			
+			int nbOk = 0;
+			int nbJoueur = 0;
 			
 			while(true){
 				//Accepte le premier client et l'ajoute à la liste des clients
@@ -50,9 +73,17 @@ public class Serveur {
 					out.println("DEBUT");
 				}
 				
+				//Attend que tous les clients confirme que la partie commence
+				waitConfirmClient(listClientSocket, nbJoueur);
+				
+				
+				
 				
 			}
 		} catch (IOException e) {
+			e.printStackTrace();
+		} catch (InterruptedException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
