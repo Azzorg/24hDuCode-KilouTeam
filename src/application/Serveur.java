@@ -48,6 +48,8 @@ public class Serveur {
 			List<BufferedReader> listClientBufferedReader = new ArrayList<BufferedReader>();
 			//Liste des PrintStream des clients -> out 
 			List<PrintStream> listClientPrintStream = new ArrayList<PrintStream>();
+			//Liste de joueur
+			List<JoueurSimple> listJoueur = new ArrayList<JoueurSimple>();
 			
 			int joueurTour;
 			int nbJoueur;
@@ -57,6 +59,7 @@ public class Serveur {
 			int targetMalus = -1;
 			String typeBonus = "";
 			String typeBotte;
+			JoueurSimple gagnant = null;
 			
 			while(true){
 				fin = false;
@@ -66,6 +69,7 @@ public class Serveur {
 				listClientSocket.add(welcomeSocket.accept());
 				
 				//Création du BufferedReader du client1
+				
 				listClientBufferedReader.add(new BufferedReader(new InputStreamReader(listClientSocket.get(0).getInputStream())));
 				listClientPrintStream.add(new PrintStream(listClientSocket.get(0).getOutputStream()));
 				
@@ -139,32 +143,49 @@ public class Serveur {
 					
 					//Attente de l'action du client
 					while(!listClientBufferedReader.get(indexJoueur).readLine().equals("ACTION")){
-						System.out.println("Attente choix client...");
+						System.out.println("Attente choix joueur...");
 					}
 					
 					action = Action.valueOf(listClientBufferedReader.get(indexJoueur).readLine());
 					
+					//Gestion de l'action effectuée par le client
 					switch(action){
 						case MOVED:
 							//Gestion du moved
+							System.out.println("Le joueur "+ indexJoueur + " a bougé");
 							break;
 						case MALUS:
 							typeMalus = listClientBufferedReader.get(indexJoueur).readLine();
 							targetMalus = Integer.parseInt(listClientBufferedReader.get(indexJoueur).readLine());
+							System.out.println("Le joueur " + indexJoueur + "a envoyé le malus " + typeMalus + " au joueur " + targetMalus);
 							break;
 						case BONUS:
 							typeBonus = listClientBufferedReader.get(indexJoueur).readLine();
+							System.out.println("Le joueur " + indexJoueur + "a utilisé le bonus " + typeBonus);
 							break;
 						case BOTTE:
 							typeBotte = listClientBufferedReader.get(indexJoueur).readLine();
+							System.out.println("Le joueur");
 							break;
 						default:
 							System.out.println("Problème réception action du client");
 							break;
 					}
 					
+					//Ecriture des MAJ dans le document HTML
 					
+					//Envoi du nouveau document HTML à tous les clients
+					for(PrintStream out : listClientPrintStream)
+						out.println("Docuement HTML");
 					
+					//Attente de tous les OK
+					waitConfirmClient(listClientSocket, nbJoueur);
+					
+					if(listJoueur.get(indexJoueur).getKmParcouru() == 10240){
+						gagnant = listJoueur.get(indexJoueur);
+						
+					}
+						
 				}
 				
 			}
