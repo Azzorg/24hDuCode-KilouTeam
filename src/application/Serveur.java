@@ -35,10 +35,11 @@ public class Serveur {
 					listClientSocket.add(welcomeSocket.accept());
 				}
 				
-				
+				for(int i = 0; i<4; i++){
+					
+				}
 			}
 		} catch (IOException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
