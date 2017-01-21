@@ -13,6 +13,7 @@ public class Serveur {
 	
 	public static void main(String[] args) {
 		try {
+			System.out.println("début");
 			ServerSocket welcomeSocket = new ServerSocket(PORT);
 			List<Socket> listClientSocket = new ArrayList<Socket>();
 			List<BufferedReader> listClientBufferedReader = new ArrayList<BufferedReader>();
