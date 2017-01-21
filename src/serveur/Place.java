@@ -13,9 +13,12 @@ public class Place {
 		this.addr = addr;
 		this.type = type;
 		this.DropableCard = new ArrayList<Card>();
-		
+
 	}
 
+	/**
+	 * Init the place whit the card it should drop
+	 */
 	public void InitCard() {
 		switch (type) {
 		case "boulangerie":
@@ -34,9 +37,11 @@ public class Place {
 	}
 
 	public void setDropableCard() {
-		DropableCard.add(new Card());
-		DropableCard.add(new Card());
-		DropableCard.add(new Card());
+		DropableCard.add(new Card("", "", "", "resources/cardImg/Card.png"));
+		DropableCard.add(new Card("", "", "", "resources/cardImg/Card.png"));
+		DropableCard.add(new Card("", "", "", "resources/cardImg/Card.png"));
+		DropableCard.add(new Card("", "", "", "resources/cardImg/Card.png"));
+		
 	}
 
 	public void dropCard() {

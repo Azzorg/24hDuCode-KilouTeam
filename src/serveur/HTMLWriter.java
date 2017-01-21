@@ -14,10 +14,11 @@ import org.jsoup.select.Elements;
 
 public class HTMLWriter {
 
-	public HTMLWriter() {
-
-	}
-
+	/**
+	 * Create the new JS call of the Mappy API. With the marker on the map for locate place
+	 * @param allBat: place to locate on the map
+	 * @return the new JS code
+	 */
 	public String CreateJSGeocode(ArrayList<ArrayList<Place>> allBat) {
 		String newJS = "L.Mappy.setImgPath(\"images/\");"
 				+ "var exampleMap1 = new L.Mappy.Map(\"example-map-1\", {clientId: 'dri_24hducode',"
@@ -50,6 +51,11 @@ public class HTMLWriter {
 		return newJS;
 	}
 
+	/**
+	 * Rewrite the HTML file with the new marker.
+	 * @param newJS: the new JS for replacing and update the map
+	 * @throws IOException
+	 */
 	public void RewriteFile(String newJS) throws IOException {
 		File input = new File("resources/site/index2.html");
 		Document doc = Jsoup.parse(input, "UTF-8", "http://LicorneForever.com/");
