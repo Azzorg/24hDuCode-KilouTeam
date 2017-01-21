@@ -1,4 +1,4 @@
-package application;
+package serveur;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,7 +13,6 @@ public class Serveur {
 	
 	public static void main(String[] args) {
 		try {
-			System.out.println("début");
 			ServerSocket welcomeSocket = new ServerSocket(PORT);
 			List<Socket> listClientSocket = new ArrayList<Socket>();
 			List<BufferedReader> listClientBufferedReader = new ArrayList<BufferedReader>();
@@ -35,11 +34,10 @@ public class Serveur {
 					listClientSocket.add(welcomeSocket.accept());
 				}
 				
-				for(int i = 0; i<4; i++){
-					
-				}
+				
 			}
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 
