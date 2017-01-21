@@ -75,10 +75,6 @@ public class Serveur {
 				
 				//Attend que tous les clients confirme que la partie commence
 				waitConfirmClient(listClientSocket, nbJoueur);
-				
-				
-				
-				
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
