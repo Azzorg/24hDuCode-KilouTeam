@@ -21,7 +21,7 @@
          <children>
             <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="@../../Resources/LogoDeOuf.JPG" />
+                  <Image url="@../../Resources/Interface/LogoDeOuf.JPG" />
                </image>
                <VBox.margin>
                   <Insets bottom="75.0" />
@@ -47,8 +47,16 @@
                         <Font name="Century Gothic" size="24.0" />
                      </font>
                   </Label>
-                  <TextField GridPane.columnIndex="1" />
-                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1" />
+                  <TextField GridPane.columnIndex="1">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
+                  </TextField>
+                  <TextField GridPane.columnIndex="1" GridPane.rowIndex="1">
+                     <font>
+                        <Font name="Century Gothic" size="12.0" />
+                     </font>
+                  </TextField>
                </children>
                <VBox.margin>
                   <Insets bottom="75.0" left="200.0" right="200.0" />
