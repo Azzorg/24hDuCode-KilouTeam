@@ -6,20 +6,18 @@ import java.io.InputStreamReader;
 import java.net.Socket;
 
 public class ThreadOK extends Thread{
-	private Socket client;
+	private JoueurSimple client;
 	final private String attendu = "OK";
 	
-	public ThreadOK(Socket client){
+	public ThreadOK(JoueurSimple client){
 		super();
 		this.client = client;
 	}
 	
 	public void run(){
 		System.out.println("Attente du client...");
-		try {
-			BufferedReader in = new BufferedReader(new InputStreamReader(client.getInputStream()));
-			
-			while(!in.readLine().equals(attendu)){
+		try {			
+			while(!client.getIn().readLine().equals(attendu)){
 				System.out.println("Pas le bon message du client");
 			}
 		} catch (IOException e) {

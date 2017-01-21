@@ -23,7 +23,7 @@ public class Serveur {
 	 * @param nbJoueur
 	 * @throws InterruptedException
 	 */
-	public static void waitConfirmClient(List<Socket> list, int nbJoueur) throws InterruptedException{
+	public static void waitConfirmClient(List<JoueurSimple> list, int nbJoueur) throws InterruptedException{
 		//Tableau de Thread pour les attentes de confirmation des clients
 		ThreadOK threadOK [] = new ThreadOK[nbJoueur];
 		
@@ -66,52 +66,51 @@ public class Serveur {
 				joueurTour = -1;
 				nbJoueur = 0;
 				//Accepte le premier client et l'ajoute à la liste des clients
-				listClientSocket.add(welcomeSocket.accept());
-				
+				listJoueur.add(new JoueurSimple());
+				listJoueur.get(0).setSocket(welcomeSocket.accept());
+
 				//Création du BufferedReader du client1
-				
-				listClientBufferedReader.add(new BufferedReader(new InputStreamReader(listClientSocket.get(0).getInputStream())));
-				listClientPrintStream.add(new PrintStream(listClientSocket.get(0).getOutputStream()));
+				listJoueur.get(0).setIn(new BufferedReader(new InputStreamReader(listJoueur.get(0).getSocket().getInputStream())));
+				listJoueur.get(0).setOut(new PrintStream(listJoueur.get(0).getSocket().getOutputStream()));
 				
 				//Envoi au client 1 que c'est ok
-				listClientPrintStream.get(0).println("OK");
+				listJoueur.get(0).getOut().println("OK");
 				
 				//Récupération du nombre de joueur qu'il aura dans la partie
-				nbJoueur = Integer.parseInt(listClientBufferedReader.get(0).readLine());
+				nbJoueur = Integer.parseInt(listJoueur.get(0).getIn().readLine());
 
 				//Envoi au client 1 que c'est ok
-				listClientPrintStream.get(0).println("OK");
+				listJoueur.get(0).getOut().println("OK");
 				
 				//Attente de tous les joueurs et création de leur socket
 				for(int i = 1; i<nbJoueur; i++){
 					System.out.println("new player added to the server");
-					listClientSocket.add(welcomeSocket.accept());
+					listJoueur.add(new JoueurSimple());
+					listJoueur.get(i).setSocket(welcomeSocket.accept());
 					System.out.println("Player added");
 					
-					//System.out.println("Envoie au client" + i+1 + " : OK");
-					
-					listClientBufferedReader.add(new BufferedReader(new InputStreamReader(listClientSocket.get(i).getInputStream())));
-					listClientPrintStream.add(new PrintStream(listClientSocket.get(i).getOutputStream()));
+					listJoueur.get(i).setIn(new BufferedReader(new InputStreamReader(listJoueur.get(i).getSocket().getInputStream())));
+					listJoueur.get(i).setOut(new PrintStream(listJoueur.get(i).getSocket().getOutputStream()));
 
 					//Envoi au client 1 que c'est ok
-					listClientPrintStream.get(i).println("OK");
+					listJoueur.get(i).getOut().println("OK");
 				}
 				
 				//Envoie à tout le monde que la partie commence
-				/*for(PrintStream out : listClientPrintStream){
+				/*for(JoueurSimple joueur : listJoueur){
 					System.out.println("Dis au clients que le jeu démarre");
-					out.println("DEBUT");
+					joueur.getOut().println("DEBUT");
 				}*/
 				
 				//Envoi au client 1 que c'est le début de la partie
-				listClientPrintStream.get(0).println("DEBUT");
-				while(!listClientBufferedReader.get(0).readLine().equals("OK")){
+				listJoueur.get(0).getOut().println("DEBUT");
+				while(!listJoueur.get(0).getIn().readLine().equals("OK")){
 					System.out.println("Client 1 pas OK");
 				}
 				
 				//Envoi au client 2 que c'est le début de la partie
-				listClientPrintStream.get(1).println("DEBUT");
-				while(!listClientBufferedReader.get(1).readLine().equals("OK")){
+				listJoueur.get(1).getOut().println("DEBUT");
+				while(!listJoueur.get(1).getIn().readLine().equals("OK")){
 					System.out.println("Client 2 pas OK");
 				}
 				
@@ -129,24 +128,24 @@ public class Serveur {
 					for(int i = 0; i<nbJoueur; i++){
 						//Envoi de "YOURTURN" au joueur qui doit jouer
 						if(i == indexJoueur)
-							listClientPrintStream.get(i).println("YOURTURN");
+							listJoueur.get(i).getOut().println("YOURTURN");
 						//Envoi de "NOTYOURTURN" aux joueurs qui ne jouent pas + de l'id du joueur qui joue
 						else
-							listClientPrintStream.get(i).println("NOTYOURTURN\n" + joueurTour%nbJoueur);
+							listJoueur.get(i).getOut().println("NOTYOURTURN\n" + indexJoueur);
 					}
 					
 					//Attente de la confirmation de tous les clients
-					waitConfirmClient(listClientSocket, nbJoueur);
+					waitConfirmClient(listJoueur, nbJoueur);
 					
 					//Envoi au client qui doit jouer qu'il peut effectivement jouer car tous les autres clients le savent
-					listClientPrintStream.get(indexJoueur).println("OK");
+					listJoueur.get(indexJoueur).getOut().println("OK");
 					
 					//Attente de l'action du client
-					while(!listClientBufferedReader.get(indexJoueur).readLine().equals("ACTION")){
+					while(!listJoueur.get(indexJoueur).getIn().readLine().equals("ACTION")){
 						System.out.println("Attente choix joueur...");
 					}
 					
-					action = Action.valueOf(listClientBufferedReader.get(indexJoueur).readLine());
+					action = Action.valueOf(listJoueur.get(indexJoueur).getIn().readLine());
 					
 					//Gestion de l'action effectuée par le client
 					switch(action){
@@ -155,16 +154,16 @@ public class Serveur {
 							System.out.println("Le joueur "+ indexJoueur + " a bougé");
 							break;
 						case MALUS:
-							typeMalus = listClientBufferedReader.get(indexJoueur).readLine();
-							targetMalus = Integer.parseInt(listClientBufferedReader.get(indexJoueur).readLine());
+							typeMalus = listJoueur.get(indexJoueur).getIn().readLine();
+							targetMalus = Integer.parseInt(listJoueur.get(indexJoueur).getIn().readLine());
 							System.out.println("Le joueur " + indexJoueur + "a envoyé le malus " + typeMalus + " au joueur " + targetMalus);
 							break;
 						case BONUS:
-							typeBonus = listClientBufferedReader.get(indexJoueur).readLine();
+							typeBonus = listJoueur.get(indexJoueur).getIn().readLine();
 							System.out.println("Le joueur " + indexJoueur + "a utilisé le bonus " + typeBonus);
 							break;
 						case BOTTE:
-							typeBotte = listClientBufferedReader.get(indexJoueur).readLine();
+							typeBotte = listJoueur.get(indexJoueur).getIn().readLine();
 							System.out.println("Le joueur");
 							break;
 						default:
@@ -175,17 +174,19 @@ public class Serveur {
 					//Ecriture des MAJ dans le document HTML
 					
 					//Envoi du nouveau document HTML à tous les clients
-					for(PrintStream out : listClientPrintStream)
-						out.println("Docuement HTML");
+					for(JoueurSimple joueur : listJoueur)
+						joueur.getOut().println("Docuement HTML");
 					
 					//Attente de tous les OK
-					waitConfirmClient(listClientSocket, nbJoueur);
+					waitConfirmClient(listJoueur, nbJoueur);
 					
+					//Un joueur a gagné
 					if(listJoueur.get(indexJoueur).getKmParcouru() == 10240){
 						gagnant = listJoueur.get(indexJoueur);
-						
+						fin = true;
 					}
-						
+					
+					
 				}
 				
 			}
