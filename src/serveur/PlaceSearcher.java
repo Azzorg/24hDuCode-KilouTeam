@@ -18,8 +18,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 public class PlaceSearcher {
+	
 	public PlaceSearcher() {
-
+			
 	}
 
 	/**
@@ -51,11 +52,11 @@ public class PlaceSearcher {
 	 *            the json file you want to write on the disk
 	 * @throws IOException
 	 */
-	public void writeToFile(InputStream in) throws IOException {
+	public void writeToFile(InputStream in, String where) throws IOException {
 		BufferedReader dr = new BufferedReader(new InputStreamReader(in));
 
 		// Ecriture du fichier
-		FileOutputStream fos = new FileOutputStream("test.json");
+		FileOutputStream fos = new FileOutputStream(where);
 		PrintStream fileWrite = new PrintStream(fos);
 
 		String to_write = dr.readLine();
@@ -74,10 +75,10 @@ public class PlaceSearcher {
 	 * 				file Path
 	 * @throws FileNotFoundException
 	 */
-	public ArrayList<Place> parseResult(String file) throws FileNotFoundException {
+	public ArrayList<Place> parseResult(String file, String type) throws FileNotFoundException {
 		FileReader fr = new FileReader(file);
 		JSONObject obj = (JSONObject) JSONValue.parse(fr);
-		return parsingPlace(obj);
+		return parsingPlace(obj, type);
 	}
 
 	/**
@@ -86,17 +87,17 @@ public class PlaceSearcher {
 	 * @param file: 
 	 *            Input Stream of the file
 	 */
-	public ArrayList<Place> parseResult(InputStream file) {
+	public ArrayList<Place> parseResult(InputStream file, String type) {
 		InputStreamReader fr = new InputStreamReader(file);
 		JSONObject obj = (JSONObject) JSONValue.parse(fr);
-		return parsingPlace(obj);
+		return parsingPlace(obj, type);
 	}
 
 	/**
 	 * C'est jolie une licorne
 	 * @param obj: un objet json
 	 */
-	private ArrayList<Place> parsingPlace(JSONObject obj) {
+	private ArrayList<Place> parsingPlace(JSONObject obj, String type) {
 		JSONObject context = (JSONObject) JSONValue.parse(obj.get("context").toString());
 		JSONObject results = (JSONObject) JSONValue.parse(context.get("results").toString());
 
@@ -112,10 +113,15 @@ public class PlaceSearcher {
 			JSONArray inscriptions_list = (JSONArray) listening.get("inscriptions");
 			JSONObject inscriptions = (JSONObject) inscriptions_list.get(0);
 
-			String n = listening.get("merchant_name").toString();
-			String addr = inscriptions.get("adress_street").toString();
+			if(listening.get("merchant_name") != null && inscriptions.get("adress_street") != null){
+				String n = listening.get("merchant_name").toString();
+				String addr = inscriptions.get("adress_street").toString();
 
-			PlaceList.add(new Place(n, addr));
+				PlaceList.add(new Place(n, addr, type));
+			}
+				
+			
+			
 		}
 		
 		return PlaceList;

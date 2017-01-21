@@ -1,0 +1,63 @@
+<!DOCTYPE HTML >
+<html>
+	<head>
+		<meta charset="utf-8" />
+		<title> Test </title>
+		<link rel="stylesheet" type="text/css" href="leaflet.css" />
+		<link rel="stylesheet" type="text/css" href="L.Mappy.css" />
+		<script type="text/javascript" src="leaflet.js"></script>
+		<script type="text/javascript" src="L.Mappy.js"></script>
+	</head>
+	<body>
+	<div id="example-map-1" style="width:100%; height:600px;"></div>
+	</body>
+	<script type="text/javascript">
+		L.Mappy.setImgPath("images/");
+		var exampleMap1 = new L.Mappy.Map("example-map-1", {
+			clientId: 'dri_24hducode',
+			center: [43.6044, 1.44295],
+			zoom: 7
+		});
+		
+		//var coords = "-1.658705, 48.126576";
+		//exampleMap1.addLayer(L.marker(coords));
+		
+		var greenIcon = L.icon({
+				iconUrl: 'images/ic_lieu/ic_boulangerie.png',
+				shadowUrl: 'images/ic_lieu/ombre.png',
+
+				iconSize:     [50, 50], // size of the icon
+				shadowSize:   [50, 50], // size of the shadow
+				iconAnchor:   [10, 22], // point of the icon which will correspond to marker's location
+				shadowAnchor: [0, 0],  // the same for the shadow
+				popupAnchor:  [-3, -76] // point from which the popup should open relative to the iconAnchor
+			});
+
+		L.Mappy.Services.geocode("32 r Trégain 35700 RENNES",
+			// Callback de succès
+			function(results){
+				var coords = results[0].Point.coordinates.split(",").reverse();
+				
+				exampleMap1.addLayer(L.marker(coords, {icon: greenIcon}));
+			},
+			// Callback d'erreur
+			function(errorType) {
+				// Error during geocoding
+			}
+		);
+		
+				L.Mappy.Services.geocode("111 r Paris 35000 RENNES",
+			// Callback de succès
+			function(results){
+				var coords = results[0].Point.coordinates.split(",").reverse();
+				
+				exampleMap1.addLayer(L.marker(coords));
+			},
+			// Callback d'erreur
+			function(errorType) {
+				// Error during geocoding
+			}
+		);
+		alert("A QUE COUCOU BOBY");
+	</script>
+</html>
