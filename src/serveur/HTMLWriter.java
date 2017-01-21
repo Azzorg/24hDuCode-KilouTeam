@@ -15,8 +15,11 @@ import org.jsoup.select.Elements;
 public class HTMLWriter {
 
 	/**
-	 * Create the new JS call of the Mappy API. With the marker on the map for locate place
-	 * @param allBat: place to locate on the map
+	 * Create the new JS call of the Mappy API. With the marker on the map for
+	 * locate place
+	 * 
+	 * @param allBat:
+	 *            place to locate on the map
 	 * @return the new JS code
 	 */
 	public String CreateJSGeocode(ArrayList<ArrayList<Place>> allBat) {
@@ -30,8 +33,7 @@ public class HTMLWriter {
 		 * CALCUL DES ROUTEUH
 		 * 
 		 */
-		
-		
+
 		for (ArrayList<Place> pl : allBat) {
 			String ic_type = pl.get(0).getType();
 			newJS += "var " + ic_type + "Icon = L.icon({" + "iconUrl: 'images/ic_lieu/ic_" + ic_type + ".png',"
@@ -53,7 +55,9 @@ public class HTMLWriter {
 
 	/**
 	 * Rewrite the HTML file with the new marker.
-	 * @param newJS: the new JS for replacing and update the map
+	 * 
+	 * @param newJS:
+	 *            the new JS for replacing and update the map
 	 * @throws IOException
 	 */
 	public void RewriteFile(String newJS) throws IOException {
@@ -101,7 +105,5 @@ public class HTMLWriter {
 		String js = h.CreateJSGeocode(List_AllBat);
 
 		h.RewriteFile(js);
-
-		ListBoulangerie.get(0).dropCard();
 	}
 }

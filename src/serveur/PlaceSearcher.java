@@ -18,9 +18,9 @@ import org.json.simple.JSONObject;
 import org.json.simple.JSONValue;
 
 public class PlaceSearcher {
-	
+
 	public PlaceSearcher() {
-			
+
 	}
 
 	/**
@@ -72,7 +72,7 @@ public class PlaceSearcher {
 	 * Parse a JSON file and stock the result in a place Array
 	 * 
 	 * @param file:
-	 * 				file Path
+	 *            file Path
 	 * @throws FileNotFoundException
 	 */
 	public ArrayList<Place> parseResult(String file, String type) throws FileNotFoundException {
@@ -84,7 +84,7 @@ public class PlaceSearcher {
 	/**
 	 * Parse a JSON file and stock the result in a place Array
 	 * 
-	 * @param file: 
+	 * @param file:
 	 *            Input Stream of the file
 	 */
 	public ArrayList<Place> parseResult(InputStream file, String type) {
@@ -95,7 +95,9 @@ public class PlaceSearcher {
 
 	/**
 	 * C'est jolie une licorne
-	 * @param obj: un objet json
+	 * 
+	 * @param obj:
+	 *            un objet json
 	 */
 	private ArrayList<Place> parsingPlace(JSONObject obj, String type) {
 		JSONObject context = (JSONObject) JSONValue.parse(obj.get("context").toString());
@@ -105,7 +107,7 @@ public class PlaceSearcher {
 
 		JSONObject result_list = (JSONObject) JSONValue.parse(obj.get("search_results").toString());
 		JSONArray result_listening_list = (JSONArray) result_list.get("listings");
-		
+
 		ArrayList<Place> PlaceList = new ArrayList<Place>();
 		for (int i = 0; i < nb_Lieu; i++) {
 			JSONObject listening = (JSONObject) result_listening_list.get(i);
@@ -113,19 +115,17 @@ public class PlaceSearcher {
 			JSONArray inscriptions_list = (JSONArray) listening.get("inscriptions");
 			JSONObject inscriptions = (JSONObject) inscriptions_list.get(0);
 
-			if(listening.get("merchant_name") != null && inscriptions.get("adress_street") != null){
+			if (listening.get("merchant_name") != null && inscriptions.get("adress_street") != null) {
 				String n = listening.get("merchant_name").toString();
 				String addr = inscriptions.get("adress_street").toString();
-				
+
 				Place placeToAdd = new Place(n, addr, type);
 				placeToAdd.InitCard();
 				PlaceList.add(placeToAdd);
 			}
-				
-			
-			
+
 		}
-		
+
 		return PlaceList;
 	}
 
