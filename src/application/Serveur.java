@@ -9,8 +9,13 @@ import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.swing.plaf.synth.SynthSpinnerUI;
+
 public class Serveur {
 	private static int PORT = 1500;
+	private enum Action {
+	    MOVED, MALUS, BONUS, BOTTE;
+	}
 	
 	/**
 	 * Méthode qui attend la confirmation de tous les clients
@@ -44,8 +49,14 @@ public class Serveur {
 			//Liste des PrintStream des clients -> out 
 			List<PrintStream> listClientPrintStream = new ArrayList<PrintStream>();
 			
-			int joueurTour = 0;
-			int nbJoueur = 0;
+			int joueurTour;
+			int nbJoueur;
+			int indexJoueur;
+			Action action;
+			String typeMalus = "";
+			int targetMalus = -1;
+			String typeBonus = "";
+			String typeBotte;
 			
 			while(true){
 				fin = false;
@@ -108,17 +119,49 @@ public class Serveur {
 				//Début du jeu
 				while(!fin){
 					joueurTour++;
+					indexJoueur = joueurTour%nbJoueur;
 					
 					//Désignation du joueur qui doit jouer
 					for(int i = 0; i<nbJoueur; i++){
 						//Envoi de "YOURTURN" au joueur qui doit jouer
-						if(i == joueurTour%nbJoueur)
+						if(i == indexJoueur)
 							listClientPrintStream.get(i).println("YOURTURN");
 						//Envoi de "NOTYOURTURN" aux joueurs qui ne jouent pas + de l'id du joueur qui joue
 						else
 							listClientPrintStream.get(i).println("NOTYOURTURN\n" + joueurTour%nbJoueur);
 					}
 					
+					//Attente de la confirmation de tous les clients
+					waitConfirmClient(listClientSocket, nbJoueur);
+					
+					//Envoi au client qui doit jouer qu'il peut effectivement jouer car tous les autres clients le savent
+					listClientPrintStream.get(indexJoueur).println("OK");
+					
+					//Attente de l'action du client
+					while(!listClientBufferedReader.get(indexJoueur).readLine().equals("ACTION")){
+						System.out.println("Attente choix client...");
+					}
+					
+					action = Action.valueOf(listClientBufferedReader.get(indexJoueur).readLine());
+					
+					switch(action){
+						case MOVED:
+							//Gestion du moved
+							break;
+						case MALUS:
+							typeMalus = listClientBufferedReader.get(indexJoueur).readLine();
+							targetMalus = Integer.parseInt(listClientBufferedReader.get(indexJoueur).readLine());
+							break;
+						case BONUS:
+							typeBonus = listClientBufferedReader.get(indexJoueur).readLine();
+							break;
+						case BOTTE:
+							typeBotte = listClientBufferedReader.get(indexJoueur).readLine();
+							break;
+						default:
+							System.out.println("Problème réception action du client");
+							break;
+					}
 					
 					
 					
@@ -127,10 +170,10 @@ public class Serveur {
 			}
 		} catch (IOException e) {
 			e.printStackTrace();
-		} /*catch (InterruptedException e) {
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 
 	}
 
