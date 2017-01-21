@@ -116,8 +116,10 @@ public class PlaceSearcher {
 			if(listening.get("merchant_name") != null && inscriptions.get("adress_street") != null){
 				String n = listening.get("merchant_name").toString();
 				String addr = inscriptions.get("adress_street").toString();
-
-				PlaceList.add(new Place(n, addr, type));
+				
+				Place placeToAdd = new Place(n, addr, type);
+				placeToAdd.InitCard();
+				PlaceList.add(placeToAdd);
 			}
 				
 			
