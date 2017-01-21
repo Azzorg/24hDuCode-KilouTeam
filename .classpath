@@ -17,5 +17,6 @@
 		</attributes>
 	</classpathentry>
 	<classpathentry kind="con" path="org.eclipse.fx.ide.jdt.core.JAVAFX_CONTAINER"/>
+	<classpathentry kind="lib" path="D:/Etudes/24Hducode/Ressources/jsoup-1.10.2.jar"/>
 	<classpathentry kind="output" path="target/classes"/>
 </classpath>
