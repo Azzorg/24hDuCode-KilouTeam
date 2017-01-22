@@ -13,6 +13,12 @@ public class JoueurClient extends Thread {
 	private final int PORT;
 	private int nJoueur;
 	private String name;
+	private String actionSuivante;
+	
+	public void setActionSuivante(String a){
+		actionSuivante = a;
+	}
+	
 	private enum Turn{
 		YOURTURN, NOTYOURTURN;
 	}
@@ -115,7 +121,11 @@ public class JoueurClient extends Thread {
 					//Random number
 					rd = new Random();
 					al = rd.nextInt(3);
+					
 					//Action du joueur
+					System.out.println(name + " : Envoi de " + actionSuivante);
+					out.println(actionSuivante);
+					/*
 					switch (al) {
 					//Moved
 					case 0:
@@ -144,7 +154,7 @@ public class JoueurClient extends Thread {
 					}
 					
 					break;
-					
+					*/
 				case NOTYOURTURN:
 					//Confirmation au serveur
 					out.println("OK");

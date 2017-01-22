@@ -10,7 +10,7 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Client extends Application{
-	
+	public static JoueurClient J1 = new JoueurClient("Joueur 1", 1, 1500);
 	@Override
 	public void start(Stage stage) throws IOException {
 		// create the scene
@@ -25,7 +25,7 @@ public class Client extends Application{
 		stage.setScene(scene);
 		stage.show();
 
-
+		
 		
 	}
 
