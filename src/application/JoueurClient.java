@@ -4,10 +4,13 @@ import java.io.BufferedReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
+import java.io.ObjectInputStream;
 import java.io.PrintStream;
 import java.net.Socket;
 import java.net.UnknownHostException;
 import java.util.Random;
+
+import serveur.FileSérialisation;
 
 public class JoueurClient extends Thread {
 	private final int PORT;
@@ -42,6 +45,7 @@ public class JoueurClient extends Thread {
 		Random rd;
 		int tailleFichier;
 		String recu;
+		boolean isSplit = false;
 		
 		
 		try {
@@ -74,31 +78,20 @@ public class JoueurClient extends Thread {
 				System.out.println(name + " : Client 1 OK");
 			}
 			
-			while(!in.readLine().equals("TAILLEFICHIER")){
-				System.out.println("attente serveur");
+			//Réception du file
+			while(!in.readLine().equals("FILE")){
+				System.out.println("Attente serveur");
 			}
-			
-			tailleFichier = Integer.parseInt(in.readLine());
-			
-			out.println("OK");
-			
-			System.out.println(name + " : Création d'un fichier");
-			String filetoWrite;
-			FileWriter file = new FileWriter("resources/site/indexClient.html");
-			
-			System.out.println(name + " : Réception du fichier");
-			for(int j = 0; j<tailleFichier; j++){
-				recu = in.readLine();
-				file.write(recu);
-				out.println("OK");
-			}
+			//Réception de la sérialisation de l'object
+			ObjectInputStream obj = new ObjectInputStream(socket.getInputStream());
+			FileWriter fooWriter = new FileWriter("resources/site/indexClient.html", false);
+			fooWriter.write(((FileSérialisation)obj.readObject()).getToSend());
 			
 			
 			//Joueur attend le début de la partie
 			while(!in.readLine().equals("DEBUT")){
 				System.out.println(name + " : Attente du début de la partie");
 			}
-			
 			
 			out.println("OK");
 			
@@ -203,6 +196,9 @@ public class JoueurClient extends Thread {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (ClassNotFoundException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

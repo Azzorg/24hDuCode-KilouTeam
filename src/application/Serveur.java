@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.io.ObjectOutputStream;
 import java.io.PrintStream;
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -12,6 +13,7 @@ import java.util.List;
 
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
+import serveur.FileSérialisation;
 import serveur.HTMLWriter;
 import serveur.Place;
 import serveur.PlaceSearcher;
@@ -97,7 +99,7 @@ public class Serveur {
 				HTMLWriter h = new HTMLWriter();
 				String js = h.CreateJSGeocode(allBat);
 				
-				String filetoSend = h.RewriteFile(js);
+				FileSérialisation filetoSend = new FileSérialisation(h.RewriteFile(js));
 				System.out.println("Fichier ecrit");
 				
 				//Accepte le premier client et l'ajoute à la liste des clients
@@ -139,14 +141,19 @@ public class Serveur {
 					
 				}
 				
-				System.out.println("Split du fichier HTML");
-				//Envoi à tous la carte 
-				HTMLtoClient = filetoSend.split("\n");
+				//Envoi par sérialisation de l'objet fileToSend
+				for(JoueurSimple jou : listJoueur){
+					jou.getOut().println("FILE");
+					
+					ObjectOutputStream obj = new ObjectOutputStream(jou.getSocket().getOutputStream());
+					obj.writeObject(filetoSend);
+					obj.flush();
+				}
 				
-				System.out.println("Taille : " + HTMLtoClient.length);
+				
 					
 				//Envoi à tous les clients la taille du document HTML
-				for(JoueurSimple joueur : listJoueur){
+				/*for(JoueurSimple joueur : listJoueur){
 					joueur.getOut().println("TAILLEFICHIER\n" + HTMLtoClient.length);
 				}
 				
@@ -156,11 +163,11 @@ public class Serveur {
 				//Envoi du document à tous les clients				
 				for(int i = 0; i<HTMLtoClient.length; i++){
 					for(JoueurSimple joueur : listJoueur){
-						System.out.println(HTMLtoClient[i]);
-						joueur.getOut().println(HTMLtoClient[i]);
+						System.out.print(HTMLtoClient[i] + " ");
+						joueur.getOut().println(HTMLtoClient[i] + " ");
 					}
 					waitConfirmClient(listJoueur, nbJoueur);
-				}
+				}*/
 				
 				
 				//Envoie à tout le monde que la partie commence
