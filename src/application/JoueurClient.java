@@ -73,11 +73,16 @@ public class JoueurClient extends Thread {
 			}
 			
 			
-			String filetoWrite;
-			FileWriter file = new FileWriter("resources/site/indexClient.html");
-			while((filetoWrite = in.readLine()) != null)
-				System.err.println(in.readLine());
+			String buffer;
+			FileWriter fooWriter = new FileWriter("resources/site/indexClient.html", false);
+
+			while((buffer = in.readLine()) != null){
+				fooWriter.write(buffer+"\n");
+			}
+				
+		
 			
+			fooWriter.close();
 			
 			//Joueur attend le début de la partie
 			while(!in.readLine().equals("DEBUT")){
