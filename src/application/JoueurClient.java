@@ -40,6 +40,8 @@ public class JoueurClient extends Thread {
 		boolean fin = false;
 		int al;
 		Random rd;
+		int tailleFichier;
+		String recu;
 		
 		
 		try {
@@ -72,11 +74,24 @@ public class JoueurClient extends Thread {
 				System.out.println(name + " : Client 1 OK");
 			}
 			
+			while(!in.readLine().equals("TAILLEFICHIER")){
+				System.out.println("attente serveur");
+			}
 			
+			tailleFichier = Integer.parseInt(in.readLine());
+			
+			out.println("OK");
+			
+			System.out.println(name + " : Création d'un fichier");
 			String filetoWrite;
 			FileWriter file = new FileWriter("resources/site/indexClient.html");
-			while((filetoWrite = in.readLine()) != null)
-				System.err.println(in.readLine());
+			
+			System.out.println(name + " : Réception du fichier");
+			for(int j = 0; j<tailleFichier; j++){
+				recu = in.readLine();
+				file.write(recu);
+				out.println("OK");
+			}
 			
 			
 			//Joueur attend le début de la partie

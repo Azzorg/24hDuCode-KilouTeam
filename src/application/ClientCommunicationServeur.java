@@ -11,7 +11,7 @@ public class ClientCommunicationServeur {
 	private int PORT = 1500;
 
 	public static void main(String args[]) {
-		//try {
+		try {
 			//Nombre de joueur
 			int nbJoueur = 2;
 			
@@ -21,8 +21,8 @@ public class ClientCommunicationServeur {
 			JoueurClient J1 = new JoueurClient("Joueur 1", 1, 1500);
 			J1.start();
 		
-			//Thread.sleep(500);
-			/*
+			Thread.sleep(5000);
+			
 			//Création du client 2
 			JoueurClient J2 = new JoueurClient("Joueur 2", 2, 1500);
 			J2.start();
@@ -32,6 +32,6 @@ public class ClientCommunicationServeur {
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
-		}*/
+		}
 	}
 }

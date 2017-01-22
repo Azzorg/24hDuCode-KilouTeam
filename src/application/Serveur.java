@@ -65,6 +65,7 @@ public class Serveur {
 			String typeBonus = "";
 			String typeBotte;
 			JoueurSimple gagnant = null;
+			String[] HTMLtoClient;
 			
 			while(true){
 				int j =0;
@@ -121,7 +122,7 @@ public class Serveur {
 				listJoueur.get(0).getOut().println(filetoSend);
 
 				
-				
+				System.out.println("Attente de tous les clients");
 				//Attente de tous les joueurs et création de leur socket
 				for(int i = 1; i<nbJoueur; i++){
 					System.out.println("new player added to the server");
@@ -138,11 +139,28 @@ public class Serveur {
 					
 				}
 				
-
-
+				System.out.println("Split du fichier HTML");
+				//Envoi à tous la carte 
+				HTMLtoClient = filetoSend.split("\n");
 				
+				System.out.println("Taille : " + HTMLtoClient.length);
+					
+				//Envoi à tous les clients la taille du document HTML
+				for(JoueurSimple joueur : listJoueur){
+					joueur.getOut().println("TAILLEFICHIER\n" + HTMLtoClient.length);
+				}
 				
+				//Attente de la confirmation de tous les clients
+				waitConfirmClient(listJoueur, nbJoueur);
 				
+				//Envoi du document à tous les clients				
+				for(int i = 0; i<HTMLtoClient.length; i++){
+					for(JoueurSimple joueur : listJoueur){
+						System.out.println(HTMLtoClient[i]);
+						joueur.getOut().println(HTMLtoClient[i]);
+					}
+					waitConfirmClient(listJoueur, nbJoueur);
+				}
 				
 				
 				//Envoie à tout le monde que la partie commence
