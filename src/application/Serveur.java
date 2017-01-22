@@ -72,13 +72,17 @@ public class Serveur {
 				//Envoie a tous les client de la carte
 				PlaceSearcher ps = new PlaceSearcher();
 				
-				/*InputStream boulangerie =  ps.searchPlace("paris", "boulangerie");
+				InputStream boulangerie =  ps.searchPlace("paris", "boulangerie");
 				InputStream boucherie =  ps.searchPlace("paris", "boucherie");
 				InputStream pharmacie =  ps.searchPlace("paris", "pharmacie");
 				
 				ps.writeToFile(boulangerie, "boulangerie.json");
 				ps.writeToFile(boucherie, "boucherie.json");
-				ps.writeToFile(pharmacie, "pharmacie.json");*/
+
+				ps.writeToFile(pharmacie, "pharmacie.json");
+
+				ps.writeToFile(pharmacie, "pharmacie.json");
+
 				
 				ArrayList<Place> listBoulangerie = ps.parseResult("boulangerie.json", "boulangerie");
 				ArrayList<Place> listBoucherie = ps.parseResult("boucherie.json", "boucherie");
