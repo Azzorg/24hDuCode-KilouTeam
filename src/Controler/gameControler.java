@@ -11,6 +11,7 @@ import javafx.fxml.Initializable;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
+import javafx.scene.control.Hyperlink;
 import javafx.scene.image.ImageView;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
@@ -53,6 +54,10 @@ public class gameControler implements Initializable{
 		
 	}
 	
+
+	/**
+	 * Called when the user clicks on the button "Go !".
+	 */
 	@FXML
 	private void newGame (ActionEvent event) {
 		
@@ -67,6 +72,39 @@ public class gameControler implements Initializable{
 		
 	}
 	
+	/**
+	 * Called when the user clicks on the button "Première connexion ?".
+	 */
+	@FXML
+	private void inscription (ActionEvent event) {
+		
+		 try {
+             Stage stage;
+             Hyperlink h = (Hyperlink) event.getSource();
+             stage = (Stage) h.getScene().getWindow();
+             switchToView("../View/Inscription.fxml", stage);
+         } catch (IOException ex) {
+             ex.getMessage();
+         }
+		
+	}
+	
+	/**
+	 * Called when the user clicks on the button "Se connecter et jouer".
+	 */
+	@FXML
+	private void playAfterInscription (ActionEvent event) {
+		
+		 try {
+             Stage stage;
+             Button b = (Button) event.getSource();
+             stage = (Stage) b.getScene().getWindow();
+             switchToView("../View/Game.fxml", stage);
+         } catch (IOException ex) {
+             ex.getMessage();
+         }
+		
+	}
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {
