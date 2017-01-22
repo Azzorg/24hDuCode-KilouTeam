@@ -15,7 +15,7 @@ public class Client extends Application{
 	public void start(Stage stage) throws IOException {
 		// create the scene
 
-		Parent root = FXMLLoader.load(getClass().getResource("../View/test.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../View/Connection.fxml"));
 		Scene scene = new Scene(root);
 
 		stage.setTitle("Web View");

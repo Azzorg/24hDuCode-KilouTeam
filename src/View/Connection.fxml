@@ -14,7 +14,6 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
    <children>
       <VBox alignment="CENTER" layoutX="363.0" layoutY="147.0" prefHeight="600.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
@@ -62,7 +61,7 @@
                   <Insets bottom="75.0" left="200.0" right="200.0" />
                </VBox.margin>
             </GridPane>
-            <Button mnemonicParsing="false" text="Jouer">
+            <Button mnemonicParsing="false" onAction="#gameConnection" text="Jouer">
                <font>
                   <Font name="Century Gothic" size="30.0" />
                </font>

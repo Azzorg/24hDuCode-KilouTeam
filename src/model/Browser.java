@@ -24,7 +24,7 @@ class Browser extends Region {
     final WebView browser = new WebView();
     final WebEngine webEngine = browser.getEngine();
     final Button but;
-    final String htmlUrl = "C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/site/index2.html";
+    final String htmlUrl = "C:/Users/Alice/git/24hDuCode-KilouTeam/resources/site/index2.html";
     
     public Browser() {
     

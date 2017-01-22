@@ -1,5 +1,4 @@
 package Controler;
-
 import java.net.URL;
 import java.util.ResourceBundle;
 
@@ -8,16 +7,24 @@ import javafx.fxml.Initializable;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
 
-public class testControler implements Initializable{
+import javafx.fxml.FXML;
 
-	@FXML
-	WebView MapView;
-	final String htmlUrl = "C:/Users/Alice/git/24hDuCode-KilouTeam/resources/site/index2.html";
+public class ConnectionControler implements Initializable {
 	
+	/**
+	 * Called when the user clicks on the connection button "Jouer".
+	 */
+	@FXML
+	private void gameConnection () {
+		
+		System.out.println("cool je fonctionne !");
+		
+	}
+
+	@Override
 	public void initialize(URL location, ResourceBundle resources) {
 		// TODO Auto-generated method stub
-		WebEngine webEngine = MapView.getEngine();
-		webEngine.load("file:///"+htmlUrl);
-		System.out.println(htmlUrl);
+		
 	}
+
 }
