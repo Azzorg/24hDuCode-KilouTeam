@@ -54,7 +54,7 @@
                   </ImageView>
                   <ImageView fx:id="Card_3" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -62,7 +62,7 @@
                   </ImageView>
                   <ImageView fx:id="Card_4" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Nourriture_licorne.jpg" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -70,7 +70,7 @@
                   </ImageView>
                   <ImageView fx:id="Card_5" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -78,7 +78,7 @@
                   </ImageView>
                   <ImageView fx:id="Card_6" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                      </image>
                      <HBox.margin>
                         <Insets right="60.0" />

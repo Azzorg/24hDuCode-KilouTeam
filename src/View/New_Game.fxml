@@ -13,13 +13,13 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.gameControler">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.New_GameController">
    <children>
       <VBox alignment="CENTER" layoutX="244.0" layoutY="-66.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" AnchorPane.bottomAnchor="0.0" AnchorPane.leftAnchor="0.0" AnchorPane.rightAnchor="0.0" AnchorPane.topAnchor="0.0">
          <children>
             <ImageView fitHeight="165.0" fitWidth="160.0" pickOnBounds="true" preserveRatio="true">
                <image>
-                  <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/LogoDeOuf.JPG" />
+                  <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/LogoDeOuf.JPG" />
                </image>
                <VBox.margin>
                   <Insets bottom="20.0" />
@@ -94,7 +94,7 @@
                   <TextField />
                </children>
             </HBox>
-            <Button mnemonicParsing="false" text="Rejoindre">
+            <Button mnemonicParsing="false" onAction="#joinGame" text="Rejoindre">
                <font>
                   <Font name="Century Gothic" size="24.0" />
                </font>
