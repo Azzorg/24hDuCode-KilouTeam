@@ -10,14 +10,14 @@ import javafx.scene.Scene;
 import javafx.stage.Stage;
 
 public class Client extends Application{
-	
-	
+	public static JoueurClient J1 = new JoueurClient("Joueur 1", 1, 1500);
+
 	@Override
 	public void start(Stage stage) throws IOException {
 		// create the scene
 		
 		JoueurClient J1 = new JoueurClient("Joueur 1", 1, 1500);
-		J1.start();
+		//J1.start()d;
 		
 		Parent root = FXMLLoader.load(getClass().getResource("../View/Connection.fxml"));
 		Scene scene = new Scene(root);
@@ -26,7 +26,7 @@ public class Client extends Application{
 		stage.setScene(scene);
 		stage.show();
 
-
+		
 		
 	}
 

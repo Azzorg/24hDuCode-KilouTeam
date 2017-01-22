@@ -37,10 +37,10 @@ public class Place {
 	}
 
 	public void setDropableCard() {
-		DropableCard.add(new Card("", "", "", "resources/cardImg/Card.png"));
-		DropableCard.add(new Card("", "", "", "resources/cardImg/Card.png"));
-		DropableCard.add(new Card("", "", "", "resources/cardImg/Card.png"));
-		DropableCard.add(new Card("", "", "", "resources/cardImg/Card.png"));
+		DropableCard.add(new Card("", "", "resources/cardImg/Card.png"));
+		DropableCard.add(new Card("", "", "resources/cardImg/Card.png"));
+		DropableCard.add(new Card("", "", "resources/cardImg/Card.png"));
+		DropableCard.add(new Card("", "", "resources/cardImg/Card.png"));
 		
 	}
 

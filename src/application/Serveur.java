@@ -96,7 +96,8 @@ public class Serveur {
 				HTMLWriter h = new HTMLWriter();
 				String js = h.CreateJSGeocode(allBat);
 				
-				String filetoSend = h.RewriteFile(js);
+				String filetoSend = h.RewriteFile(js); //Chaine final du fichier HTML a envoyé au client.
+				
 				System.out.println("Fichier ecrit");
 				
 				//Accepte le premier client et l'ajoute à la liste des clients
