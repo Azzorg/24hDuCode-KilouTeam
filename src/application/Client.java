@@ -20,15 +20,12 @@ public class Client extends Application{
 		J1.start();
 
 		
-		Parent root = FXMLLoader.load(getClass().getResource("../View/Game.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../View/Connection.fxml"));
 		Scene scene = new Scene(root);
 
 		stage.setTitle("Web View");
 		stage.setScene(scene);
 		stage.show();
-
-		
-		
 	}
 
 	public static void main(String[] args) {
