@@ -12,6 +12,7 @@ import java.util.List;
 
 import javax.swing.plaf.synth.SynthSpinnerUI;
 
+import serveur.HTMLWriter;
 import serveur.Place;
 import serveur.PlaceSearcher;
 
@@ -70,6 +71,34 @@ public class Serveur {
 				fin = false;
 				joueurTour = -1;
 				nbJoueur = 0;
+				
+				//Envoie a tous les client de la carte
+				PlaceSearcher ps = new PlaceSearcher();
+				
+				/*InputStream boulangerie =  ps.searchPlace("rennes", "boulangerie");
+				InputStream boucherie =  ps.searchPlace("rennes", "boucherie");
+				InputStream pharmacie =  ps.searchPlace("rennes", "pharmacie");
+				
+				ps.writeToFile(boulangerie, "boulangerie.json");
+				ps.writeToFile(boucherie, "boucherie.json");
+				ps.writeToFile(pharmacie, "pharmacie.json");*/
+				
+				ArrayList<Place> listBoulangerie = ps.parseResult("boulangerie.json", "boulangerie");
+				ArrayList<Place> listBoucherie = ps.parseResult("boucherie.json", "boucherie");
+				ArrayList<Place> listPharmacie = ps.parseResult("pharmacie.json", "pharmacie");
+				
+				ArrayList<ArrayList<Place>> allBat = new ArrayList<ArrayList<Place>>();
+				
+				allBat.add(listBoulangerie);
+				allBat.add(listBoucherie);
+				allBat.add(listPharmacie);
+				
+				HTMLWriter h = new HTMLWriter();
+				String js = h.CreateJSGeocode(allBat);
+				
+				String filetoSend = h.RewriteFile(js);
+				System.out.println("Fichier ecrit");
+				
 				//Accepte le premier client et l'ajoute à la liste des clients
 				listJoueur.add(new JoueurSimple());
 				listJoueur.get(0).setSocket(welcomeSocket.accept());
@@ -89,6 +118,9 @@ public class Serveur {
 
 				//Envoi au client 1 que c'est ok
 				listJoueur.get(0).getOut().println("OK");
+				listJoueur.get(0).getOut().println(filetoSend);
+
+				
 				
 				//Attente de tous les joueurs et création de leur socket
 				for(int i = 1; i<nbJoueur; i++){
@@ -102,27 +134,14 @@ public class Serveur {
 
 					//Envoi au client 1 que c'est ok
 					listJoueur.get(i).getOut().println("OK");
+					listJoueur.get(i).getOut().println(filetoSend);
+					
 				}
 				
-				//Envoie a tous les client de la carte
-				PlaceSearcher ps = new PlaceSearcher();
-				InputStream boulangerie =  ps.searchPlace("le mans", "boulangerie");
-				InputStream boucherie =  ps.searchPlace("le mans", "boucherie");
-				InputStream pharmacie =  ps.searchPlace("le mans", "pharmacie");
+
+
 				
-				ps.writeToFile(boulangerie, "boulangerie.json");
-				ps.writeToFile(boucherie, "boucherie.json");
-				ps.writeToFile(pharmacie, "pharmacie.json");
 				
-				ArrayList<Place> listBoulangerie = ps.parseResult("boulangerie.json", "boulangerie");
-				ArrayList<Place> listBoucherie = ps.parseResult("boucherie.json", "boucherie");
-				ArrayList<Place> listPharmacie = ps.parseResult("pharmacie.json", "pharmacie");
-				
-				ArrayList<ArrayList<Place>> allBat = new ArrayList<ArrayList<Place>>();
-				
-				allBat.add(listBoulangerie);
-				allBat.add(listBoucherie);
-				allBat.add(listPharmacie);
 				
 				
 				

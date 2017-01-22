@@ -1,6 +1,7 @@
 package application;
 
 import java.io.BufferedReader;
+import java.io.FileWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
@@ -71,10 +72,19 @@ public class JoueurClient extends Thread {
 				System.out.println(name + " : Client 1 OK");
 			}
 			
+			
+			String filetoWrite;
+			FileWriter file = new FileWriter("resources/site/indexClient.html");
+			while((filetoWrite = in.readLine()) != null)
+				System.err.println(in.readLine());
+			
+			
 			//Joueur attend le début de la partie
 			while(!in.readLine().equals("DEBUT")){
 				System.out.println(name + " : Attente du début de la partie");
 			}
+			
+			
 			out.println("OK");
 			
 			System.out.println(name + " : début ok");

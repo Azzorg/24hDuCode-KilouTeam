@@ -60,7 +60,7 @@ public class HTMLWriter {
 	 *            the new JS for replacing and update the map
 	 * @throws IOException
 	 */
-	public void RewriteFile(String newJS) throws IOException {
+	public String RewriteFile(String newJS) throws IOException {
 		File input = new File("resources/site/index2.html");
 		Document doc = Jsoup.parse(input, "UTF-8", "http://LicorneForever.com/");
 		Elements scripts = doc.getElementsByTag("script");
@@ -76,6 +76,8 @@ public class HTMLWriter {
 		FileWriter fooWriter = new FileWriter(input, false);
 		fooWriter.write(newHtml);
 		fooWriter.close();
+		
+		return newHtml;
 	}
 
 	public static void main(String args[]) throws IOException {
@@ -101,7 +103,7 @@ public class HTMLWriter {
 		List_AllBat.add(ListBoulangerie);
 		List_AllBat.add(ListBoucher);
 		List_AllBat.add(ListPharmacie);
-
+		
 		String js = h.CreateJSGeocode(List_AllBat);
 
 		h.RewriteFile(js);

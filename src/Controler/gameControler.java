@@ -26,7 +26,7 @@ public class gameControler implements Initializable{
 
 	@FXML
 	WebView MapView;
-	final String htmlUrl = "C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/site/index2.html";
+	final String htmlUrl = "C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/site/indexClient.html";
 	
 	@Override
 	public void initialize(URL location, ResourceBundle resources) {

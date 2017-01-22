@@ -107,7 +107,7 @@ public class PlaceSearcher {
 
 		JSONObject result_list = (JSONObject) JSONValue.parse(obj.get("search_results").toString());
 		JSONArray result_listening_list = (JSONArray) result_list.get("listings");
-
+		
 		ArrayList<Place> PlaceList = new ArrayList<Place>();
 		for (int i = 0; i < nb_Lieu; i++) {
 			JSONObject listening = (JSONObject) result_listening_list.get(i);
