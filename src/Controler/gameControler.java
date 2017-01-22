@@ -71,8 +71,8 @@ public class gameControler implements Initializable {
 			"file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Retrecissement_arc.jpg");
 	Card Carte4 = new Card("Agrandissement_arc", "BONUS",
 			"file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Agrandissement_arc.jpg");
-	Card Carte5 = new Card("Nourriture_licorne", "BONUS",
-			"file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Nourriture_licorne.jpg");
+	Card Carte5 = new Card("Demarrage_arc", "BONUS",
+			"file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Demarrage_arc.jpg");
 	Card Carte6 = new Card("Terrier_Licorne", "BOTTE",
 			"file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Terrier_Licorne.jpg");
 
@@ -111,48 +111,66 @@ public class gameControler implements Initializable {
 		@Override
 		public void handle(MouseEvent event) {
 			// TODO Auto-generated method stub
-			ImageView c = (ImageView) event.getSource();
+			ImageView b = (ImageView) event.getSource();
 			
-			
+			Card c;
 			// System.out.println(c);
 			int n;
-			switch (c.getId()) {
+			switch (b.getId()) {
 			case "Card_1":
-				System.out.println(Carte1.getAction() + " : " + Carte1.getName());
-				n = Integer.parseInt(kilometre.getText()) + 512;
+				c = Carte1;
+				/*n = Integer.parseInt(kilometre.getText()) + 512;
+				VerifWin(n);
+				kilometre.setText(n + "");
+				Client.J1.setActionSuivante("ACTION\nMOVED\n54\n26");*/
+				break;
+			case "Card_2":
+				c = Carte2;
+
+				break;
+			case "Card_3":
+				c = Carte3;
+
+				break;
+			case "Card_4":
+				c = Carte4;
+				break;
+				
+			case "Card_5":
+				c = Carte5;
+				break;
+				
+			case "Card_6":
+				c = Carte6;
+				break;
+			default:
+				c = Carte1;
+				break;
+					
+			}
+			
+			System.out.println(c.getAction() + " : " + c.getName());
+			switch (c.getAction()) {
+			case "MOVED":
+				n = Integer.parseInt(kilometre.getText()) + Integer.parseInt(c.getName());
 				VerifWin(n);
 				kilometre.setText(n + "");
 				Client.J1.setActionSuivante("ACTION\nMOVED\n54\n26");
 				break;
-			case "Card_2":
-				System.out.println(Carte2.getAction() + " : " + Carte2.getName());
-				n = Integer.parseInt(kilometre.getText()) + 2048;
-				VerifWin(n);
-				kilometre.setText(n + "");
-				Client.J1.setActionSuivante("ACTION\nMOVED\n123\n65");
+			case "MALUS":
+				Client.J1.setActionSuivante("ACTION\nMALUS\n"+c.getName()+"\n2");
 				break;
-			case "Card_3":
-				System.out.println(Carte3.getAction() + " : " + Carte3.getName());
-				Client.J1.setActionSuivante("ACTION\nMOVED\n123\n65");
+			case "BONUS":
+				Client.J1.setActionSuivante("ACTION\nBONUS\n"+c.getName());
+				break;
+			case "BOTTE":
+				botte1.setImage(new Image(c.getImagePath()));
+				Client.J1.setActionSuivante("ACTION\nBOTTE\n"+c.getName());
+				break;
 
-				break;
-			case "Card_4":
-				System.out.println(Carte4.getAction() + " : " + Carte4.getName());
-				Client.J1.setActionSuivante("ACTION\nMOVED\n123\n65");
-				break;
-			case "Card_5":
-				System.out.println(Carte5.getAction() + " : " + Carte5.getName());
-				Client.J1.setActionSuivante("ACTION\nMOVED\n123\n65");
-				break;
-			case "Card_6":
-				botte1.setImage(new Image(Carte6.getImagePath()));
-				System.out.println(Carte6.getAction() + " : " + Carte6.getName());
-				Client.J1.setActionSuivante("ACTION\nMOVED\n123\n65");
+			default:
 				break;
 			}
-			
-			
-			
 		}
 	};
 
@@ -160,7 +178,7 @@ public class gameControler implements Initializable {
 		if (n >= 10240) {
 			Alert alert = new Alert(AlertType.INFORMATION);
 			alert.setTitle("OH OH OH GOOD JOB");
-			//alert.setHeaderText("Look, an Information Dialog");
+			// alert.setHeaderText("Look, an Information Dialog");
 			alert.setContentText("YOU HAVE WON MOTHER FUCKER !");
 			alert.showAndWait().ifPresent(rs -> {
 				if (rs == ButtonType.OK) {
