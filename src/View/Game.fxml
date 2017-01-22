@@ -15,25 +15,28 @@
 <?import javafx.scene.layout.RowConstraints?>
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
+<?import javafx.scene.web.WebView?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" style="-fx-background-color: #0000;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="600.0" prefWidth="960.0" style="-fx-background-color: #0000;" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="Controler.gameControler">
    <children>
       <BorderPane layoutX="-9.0" layoutY="-1.0" prefHeight="600.0" prefWidth="960.0" style="-fx-background-color: #0000;" AnchorPane.bottomAnchor="1.0" AnchorPane.leftAnchor="-9.0" AnchorPane.rightAnchor="9.0" AnchorPane.topAnchor="-1.0">
          <left>
-            <GridPane fx:id="MapView" prefHeight="421.0" prefWidth="712.0" BorderPane.alignment="CENTER">
+            <GridPane prefHeight="421.0" prefWidth="712.0" BorderPane.alignment="CENTER">
               <columnConstraints>
                 <ColumnConstraints hgrow="SOMETIMES" minWidth="10.0" prefWidth="100.0" />
               </columnConstraints>
               <rowConstraints>
                 <RowConstraints minHeight="10.0" prefHeight="30.0" vgrow="SOMETIMES" />
               </rowConstraints>
+               <children>
+                  <WebView fx:id="MapView" prefHeight="200.0" prefWidth="200.0" />
+               </children>
             </GridPane>
          </left>
          <bottom>
             <HBox alignment="CENTER" prefHeight="151.0" prefWidth="960.0" BorderPane.alignment="CENTER">
                <children>
-                  <ImageView fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Card_1" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
                      </image>
@@ -41,7 +44,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Card_2" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
                      </image>
@@ -49,7 +52,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Card_3" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
                      </image>
@@ -57,7 +60,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Card_4" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
                      </image>
@@ -65,7 +68,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Card_5" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
                      </image>
@@ -73,7 +76,7 @@
                         <Insets right="20.0" />
                      </HBox.margin>
                   </ImageView>
-                  <ImageView fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
+                  <ImageView fx:id="Card_6" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
                         <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
                      </image>
