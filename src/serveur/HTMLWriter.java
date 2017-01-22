@@ -80,6 +80,11 @@ public class HTMLWriter {
 		return newHtml;
 	}
 
+	/**
+	 * This is a test for the parser
+	 * @param args
+	 * @throws IOException
+	 */
 	public static void main(String args[]) throws IOException {
 		HTMLWriter h = new HTMLWriter();
 		PlaceSearcher ps = new PlaceSearcher();
