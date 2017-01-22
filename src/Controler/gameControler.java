@@ -159,9 +159,9 @@ public class gameControler implements Initializable {
 	public void VerifWin(int n) {
 		if (n >= 10240) {
 			Alert alert = new Alert(AlertType.INFORMATION);
-			alert.setTitle("OH OH OH GOOD JOB");
+			alert.setTitle("GOOD JOB");
 			//alert.setHeaderText("Look, an Information Dialog");
-			alert.setContentText("YOU HAVE WON MOTHER FUCKER !");
+			alert.setContentText("YOU HAVE WON !");
 			alert.showAndWait().ifPresent(rs -> {
 				if (rs == ButtonType.OK) {
 					System.out.println("Pressed OK.");
