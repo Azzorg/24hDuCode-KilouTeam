@@ -77,18 +77,8 @@ public class JoueurClient extends Thread {
 				
 				System.out.println(name + " : Client 1 OK");
 			}
-			
-			
-			String buffer;
-			FileWriter fooWriter = new FileWriter("resources/site/indexClient.html", false);
-
-			while((buffer = in.readLine()) != null){
-				fooWriter.write(buffer+"\n");
-			}
 				
 		
-			
-			fooWriter.close();
 			
 			//Joueur attend le début de la partie
 			while(!in.readLine().equals("DEBUT")){
@@ -123,38 +113,14 @@ public class JoueurClient extends Thread {
 					al = rd.nextInt(3);
 					
 					//Action du joueur
+					
+					Thread.sleep(10000);
+					
 					System.out.println(name + " : Envoi de " + actionSuivante);
 					out.println(actionSuivante);
-					/*
-					switch (al) {
-					//Moved
-					case 0:
-						System.out.println(name + " : Envoi de MOVED");
-						out.println("ACTION\nMOVED\n54\n26");
-						break;
-					//MALUS
-					case 1:
-						System.out.println(name + " : Envoi de MALUS");
-						out.println("ACTION\nMALUS\nFEU_ROUGE\n2");
-						break;
-					//BONUS
-					case 2:
-						System.out.println(name + " : Envoi de BONUS");
-						out.println("ACTION\nBONUS\nFEU_VERT");
-						break;
-					//BOTTE
-					case 3:
-						System.out.println(name + " : Envoi de BOTTE");
-						out.println("ACTION\nBOTTE\nAS_LICORNE");
-						break;	
-						
-					default:
-						System.out.println(name + " : Pas d'action");
-						break;
-					}
-					
+
 					break;
-					*/
+					
 				case NOTYOURTURN:
 					//Confirmation au serveur
 					out.println("OK");
@@ -203,6 +169,9 @@ public class JoueurClient extends Thread {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}

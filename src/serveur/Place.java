@@ -59,7 +59,6 @@ public class Place {
 		System.out.println("Adresse: " + this.addr);
 		System.out.println("Type: " + this.type);
 		System.out.println("--------------------------");
-
 	}
 
 	/*
