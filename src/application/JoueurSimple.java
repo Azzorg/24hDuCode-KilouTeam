@@ -5,7 +5,7 @@ import java.io.PrintStream;
 import java.net.Socket;
 
 public class JoueurSimple {
-	private String nom;
+	private String nom = "";
 	private int nJoueur;
 	private Socket socket;
 	private BufferedReader in;

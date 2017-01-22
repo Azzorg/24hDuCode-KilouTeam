@@ -42,12 +42,12 @@ public class Serveur {
 			System.out.println("début");
 			ServerSocket welcomeSocket = new ServerSocket(PORT);
 			boolean fin;
-			//Liste des sockets des clients
+			/*//Liste des sockets des clients
 			List<Socket> listClientSocket = new ArrayList<Socket>();
 			//Liste des BufferedReader des clients -> in
 			List<BufferedReader> listClientBufferedReader = new ArrayList<BufferedReader>();
 			//Liste des PrintStream des clients -> out 
-			List<PrintStream> listClientPrintStream = new ArrayList<PrintStream>();
+			List<PrintStream> listClientPrintStream = new ArrayList<PrintStream>();*/
 			//Liste de joueur
 			List<JoueurSimple> listJoueur = new ArrayList<JoueurSimple>();
 			
@@ -62,6 +62,7 @@ public class Serveur {
 			JoueurSimple gagnant = null;
 			
 			while(true){
+				int j =0;
 				fin = false;
 				joueurTour = -1;
 				nbJoueur = 0;
@@ -78,6 +79,9 @@ public class Serveur {
 				
 				//Récupération du nombre de joueur qu'il aura dans la partie
 				nbJoueur = Integer.parseInt(listJoueur.get(0).getIn().readLine());
+				
+				//get name joueur
+				listJoueur.get(0).setNom(listJoueur.get(0).getIn().readLine());
 
 				//Envoi au client 1 que c'est ok
 				listJoueur.get(0).getOut().println("OK");
@@ -128,10 +132,10 @@ public class Serveur {
 					for(int i = 0; i<nbJoueur; i++){
 						//Envoi de "YOURTURN" au joueur qui doit jouer
 						if(i == indexJoueur)
-							listJoueur.get(i).getOut().println("YOURTURN");
+							listJoueur.get(i).getOut().println("TURN\nYOURTURN");
 						//Envoi de "NOTYOURTURN" aux joueurs qui ne jouent pas + de l'id du joueur qui joue
 						else
-							listJoueur.get(i).getOut().println("NOTYOURTURN\n" + indexJoueur);
+							listJoueur.get(i).getOut().println("TURN\nNOTYOURTURN\n" + indexJoueur);
 					}
 					
 					//Attente de la confirmation de tous les clients
@@ -175,7 +179,7 @@ public class Serveur {
 					
 					//Envoi du nouveau document HTML à tous les clients
 					for(JoueurSimple joueur : listJoueur)
-						joueur.getOut().println("Docuement HTML");
+						joueur.getOut().println("Document HTML");
 					
 					//Attente de tous les OK
 					waitConfirmClient(listJoueur, nbJoueur);
@@ -184,10 +188,24 @@ public class Serveur {
 					if(listJoueur.get(indexJoueur).getKmParcouru() == 10240){
 						gagnant = listJoueur.get(indexJoueur);
 						fin = true;
+						for(JoueurSimple joueur : listJoueur){
+							joueur.getOut().println("ETAT\nFIN\n" + joueur.getNom());
+						}
+					}
+					else{
+						for(JoueurSimple joueur : listJoueur){
+							joueur.getOut().println("ETAT\nNONFIN\n" + joueur.getNom());
+						}
 					}
 					
+					//Fin boucle
+					if(j == 10){
+						fin = true;
+					}
+					j++;
 					
 				}
+				System.out.println("FIN");
 				
 			}
 		} catch (IOException e) {
