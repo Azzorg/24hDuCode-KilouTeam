@@ -17,9 +17,10 @@ public class Client extends Application{
 		// create the scene
 		
 		JoueurClient J1 = new JoueurClient("Joueur 1", 1, 1500);
-		//J1.start()d;
+		J1.start();
+
 		
-		Parent root = FXMLLoader.load(getClass().getResource("../View/Connection.fxml"));
+		Parent root = FXMLLoader.load(getClass().getResource("../View/Game.fxml"));
 		Scene scene = new Scene(root);
 
 		stage.setTitle("Web View");

@@ -75,14 +75,14 @@ public class Serveur {
 				//Envoie a tous les client de la carte
 				PlaceSearcher ps = new PlaceSearcher();
 				
-				InputStream boulangerie =  ps.searchPlace("paris", "boulangerie");
+				/*InputStream boulangerie =  ps.searchPlace("paris", "boulangerie");
 				InputStream boucherie =  ps.searchPlace("paris", "boucherie");
 				InputStream pharmacie =  ps.searchPlace("paris", "pharmacie");
 				
 				ps.writeToFile(boulangerie, "boulangerie.json");
 				ps.writeToFile(boucherie, "boucherie.json");
 				ps.writeToFile(pharmacie, "pharmacie.json");
-				
+				*/
 				ArrayList<Place> listBoulangerie = ps.parseResult("boulangerie.json", "boulangerie");
 				ArrayList<Place> listBoucherie = ps.parseResult("boucherie.json", "boucherie");
 				ArrayList<Place> listPharmacie = ps.parseResult("pharmacie.json", "pharmacie");
@@ -119,7 +119,7 @@ public class Serveur {
 
 				//Envoi au client 1 que c'est ok
 				listJoueur.get(0).getOut().println("OK");
-
+				System.out.println(nbJoueur);
 				
 				//Attente de tous les joueurs et création de leur socket
 				for(int i = 1; i<nbJoueur; i++){
