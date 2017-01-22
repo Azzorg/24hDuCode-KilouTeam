@@ -6,11 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import serveur.HTMLWriter;
 import serveur.Place;
@@ -75,14 +72,14 @@ public class Serveur {
 				//Envoie a tous les client de la carte
 				PlaceSearcher ps = new PlaceSearcher();
 				
-				/*InputStream boulangerie =  ps.searchPlace("paris", "boulangerie");
+				InputStream boulangerie =  ps.searchPlace("paris", "boulangerie");
 				InputStream boucherie =  ps.searchPlace("paris", "boucherie");
 				InputStream pharmacie =  ps.searchPlace("paris", "pharmacie");
 				
 				ps.writeToFile(boulangerie, "boulangerie.json");
 				ps.writeToFile(boucherie, "boucherie.json");
 				ps.writeToFile(pharmacie, "pharmacie.json");
-				*/
+				
 				ArrayList<Place> listBoulangerie = ps.parseResult("boulangerie.json", "boulangerie");
 				ArrayList<Place> listBoucherie = ps.parseResult("boucherie.json", "boucherie");
 				ArrayList<Place> listPharmacie = ps.parseResult("pharmacie.json", "pharmacie");
