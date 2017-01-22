@@ -2,6 +2,7 @@ package application;
 
 import java.io.BufferedReader;
 import java.io.IOException;
+import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
@@ -10,6 +11,9 @@ import java.util.ArrayList;
 import java.util.List;
 
 import javax.swing.plaf.synth.SynthSpinnerUI;
+
+import serveur.Place;
+import serveur.PlaceSearcher;
 
 public class Serveur {
 	private static int PORT = 1500;
@@ -100,6 +104,28 @@ public class Serveur {
 					listJoueur.get(i).getOut().println("OK");
 				}
 				
+				//Envoie a tous les client de la carte
+				PlaceSearcher ps = new PlaceSearcher();
+				InputStream boulangerie =  ps.searchPlace("le mans", "boulangerie");
+				InputStream boucherie =  ps.searchPlace("le mans", "boucherie");
+				InputStream pharmacie =  ps.searchPlace("le mans", "pharmacie");
+				
+				ps.writeToFile(boulangerie, "boulangerie.json");
+				ps.writeToFile(boucherie, "boucherie.json");
+				ps.writeToFile(pharmacie, "pharmacie.json");
+				
+				ArrayList<Place> listBoulangerie = ps.parseResult("boulangerie.json", "boulangerie");
+				ArrayList<Place> listBoucherie = ps.parseResult("boucherie.json", "boucherie");
+				ArrayList<Place> listPharmacie = ps.parseResult("pharmacie.json", "pharmacie");
+				
+				ArrayList<ArrayList<Place>> allBat = new ArrayList<ArrayList<Place>>();
+				
+				allBat.add(listBoulangerie);
+				allBat.add(listBoucherie);
+				allBat.add(listPharmacie);
+				
+				
+				
 				//Envoie à tout le monde que la partie commence
 				/*for(JoueurSimple joueur : listJoueur){
 					System.out.println("Dis au clients que le jeu démarre");
@@ -176,6 +202,10 @@ public class Serveur {
 					}
 					
 					//Ecriture des MAJ dans le document HTML
+					
+					
+					
+					
 					
 					//Envoi du nouveau document HTML à tous les clients
 					for(JoueurSimple joueur : listJoueur)
