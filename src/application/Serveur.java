@@ -6,11 +6,8 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 import java.io.PrintStream;
 import java.net.ServerSocket;
-import java.net.Socket;
 import java.util.ArrayList;
 import java.util.List;
-
-import javax.swing.plaf.synth.SynthSpinnerUI;
 
 import serveur.HTMLWriter;
 import serveur.Place;
