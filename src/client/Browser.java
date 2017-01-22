@@ -51,8 +51,8 @@ class Browser extends Region {
                 	y1 = (float)Math.random()*100;
                 	x2 = x1 + 2;
                 	y2 = y1 + 2;
-                    posMod.ChangePosition(htmlUrl, 48, 2);
-                    posMod.DrawLine(htmlUrl, 48, 2, 48.1, 2.1);
+                    //posMod.ChangePosition(htmlUrl, 48, 2);
+                    posMod.DrawLine(htmlUrl);
                     webEngine.load("file:///"+htmlUrl);
                 } catch (IOException ex) {
                     Logger.getLogger(Browser.class.getName()).log(Level.SEVERE, null, ex);
