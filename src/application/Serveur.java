@@ -78,9 +78,6 @@ public class Serveur {
 				
 				ps.writeToFile(boulangerie, "boulangerie.json");
 				ps.writeToFile(boucherie, "boucherie.json");
-
-				ps.writeToFile(pharmacie, "pharmacie.json");
-
 				ps.writeToFile(pharmacie, "pharmacie.json");
 
 				
