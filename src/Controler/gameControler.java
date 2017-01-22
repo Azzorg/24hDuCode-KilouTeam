@@ -5,9 +5,11 @@ import java.util.ResourceBundle;
 
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
 import javafx.scene.web.WebEngine;
 import javafx.scene.web.WebView;
+import serveur.Card;
 
 public class gameControler implements Initializable{
 
@@ -33,8 +35,13 @@ public class gameControler implements Initializable{
 		// TODO Auto-generated method stub
 		WebEngine webEngine = MapView.getEngine();
 		webEngine.load("file:///"+htmlUrl);
-		System.out.println(htmlUrl);
-		System.err.println(Card_1);
+
+		Card_1.setImage(new Image("file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Carte512.jpg"));
+		Card_2.setImage(new Image("file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Carte512.jpg"));
+		Card_3.setImage(new Image("file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Carte512.jpg"));
+		Card_4.setImage(new Image("file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Carte512.jpg"));
+		Card_5.setImage(new Image("file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Carte512.jpg"));
+		Card_6.setImage(new Image("file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Carte512.jpg"));
 	}
 
 	
