@@ -38,7 +38,7 @@
                <children>
                   <ImageView fx:id="Card_1" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -46,7 +46,7 @@
                   </ImageView>
                   <ImageView fx:id="Card_2" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -54,7 +54,7 @@
                   </ImageView>
                   <ImageView fx:id="Card_3" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -62,7 +62,7 @@
                   </ImageView>
                   <ImageView fx:id="Card_4" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Nourriture_licorne.jpg" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -70,7 +70,7 @@
                   </ImageView>
                   <ImageView fx:id="Card_5" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -78,7 +78,7 @@
                   </ImageView>
                   <ImageView fx:id="Card_6" fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="@../../resources/Interface/Emplacement_carte.JPG" />
+                        <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                      </image>
                      <HBox.margin>
                         <Insets right="60.0" />
@@ -86,7 +86,7 @@
                   </ImageView>
                   <ImageView fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/7i7k9kqij.gif" />
+                        <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/7i7k9kqij.gif" />
                      </image>
                      <HBox.margin>
                         <Insets right="20.0" />
@@ -94,7 +94,7 @@
                   </ImageView>
                   <ImageView fitHeight="134.0" fitWidth="87.0" pickOnBounds="true" preserveRatio="true">
                      <image>
-                        <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/poubelle.jpg" />
+                        <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/poubelle.jpg" />
                      </image>
                   </ImageView>
                </children>
@@ -125,7 +125,7 @@
                         </TextField>
                         <ImageView fitHeight="89.0" fitWidth="104.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/LogoDeOuf.JPG" />
+                              <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/LogoDeOuf.JPG" />
                            </image>
                         </ImageView>
                      </children>
@@ -134,7 +134,7 @@
                      <children>
                         <ImageView fitHeight="99.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
+                              <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                            </image>
                            <HBox.margin>
                               <Insets right="10.0" />
@@ -142,7 +142,7 @@
                         </ImageView>
                         <ImageView fitHeight="99.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
+                              <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                            </image>
                            <HBox.margin>
                               <Insets right="10.0" />
@@ -150,7 +150,7 @@
                         </ImageView>
                         <ImageView fitHeight="99.0" fitWidth="64.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
+                              <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                            </image>
                         </ImageView>
                      </children>
@@ -162,7 +162,7 @@
                      <children>
                         <ImageView fx:id="botte1" fitHeight="90.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
+                              <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                            </image>
                            <HBox.margin>
                               <Insets right="2.0" />
@@ -170,7 +170,7 @@
                         </ImageView>
                         <ImageView fx:id="botte2" fitHeight="90.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
+                              <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                            </image>
                            <HBox.margin>
                               <Insets right="2.0" />
@@ -178,7 +178,7 @@
                         </ImageView>
                         <ImageView fx:id="botte3" fitHeight="90.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
+                              <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                            </image>
                            <HBox.margin>
                               <Insets right="2.0" />
@@ -186,7 +186,7 @@
                         </ImageView>
                         <ImageView fx:id="botte4" fitHeight="90.0" fitWidth="59.0" pickOnBounds="true" preserveRatio="true">
                            <image>
-                              <Image url="file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
+                              <Image url="file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Emplacement_carte.JPG" />
                            </image>
                         </ImageView>
                      </children>

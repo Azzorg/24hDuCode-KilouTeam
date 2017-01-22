@@ -21,10 +21,12 @@ import javafx.scene.Scene;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
+
 import javafx.scene.control.ButtonType;
 import javafx.scene.control.DialogPane;
 import javafx.scene.control.Hyperlink;
 import javafx.scene.control.TextField;
+
 import javafx.scene.image.ImageView;
 import javafx.scene.input.MouseEvent;
 import javafx.scene.web.WebEngine;
@@ -66,9 +68,9 @@ public class gameControler implements Initializable {
 	Card Carte1 = new Card("512", "MOVED",
 			"file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Carte512.jpg");
 	Card Carte2 = new Card("2048", "MOVED",
-			"file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Carte2048.jpg");
+			"file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Carte2048.jpg");
 	Card Carte3 = new Card("Retrecissement_arc", "MALUS",
-			"file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Retrecissement_arc.jpg");
+			"file:/C:/Users/Alice/git/24hDuCode-KilouTeam/resources/Interface/Retrecissement_arc.jpg");
 	Card Carte4 = new Card("Agrandissement_arc", "BONUS",
 			"file:/C:/Users/Rémy/git/24hDuCode-KilouTeam/resources/Interface/Agrandissement_arc.jpg");
 	Card Carte5 = new Card("Demarrage_arc", "BONUS",
@@ -87,6 +89,7 @@ public class gameControler implements Initializable {
 		kilometre.setText("0");
 		WebEngine webEngine = MapView.getEngine();
 		webEngine.load("file:///" + htmlUrl);
+
 
 		Card_1.setImage(new Image(Carte1.getImagePath()));
 		Card_1.setOnMouseClicked(CardClick);

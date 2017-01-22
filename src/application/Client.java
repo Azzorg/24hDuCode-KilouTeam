@@ -16,8 +16,9 @@ public class Client extends Application{
 	public void start(Stage stage) throws IOException {
 		// create the scene
 		
-		//JoueurClient J1 = new JoueurClient("Joueur 1", 1, 1500);
+		JoueurClient J1 = new JoueurClient("Joueur 1", 1, 1500);
 		J1.start();
+
 		
 		Parent root = FXMLLoader.load(getClass().getResource("../View/Game.fxml"));
 		Scene scene = new Scene(root);
